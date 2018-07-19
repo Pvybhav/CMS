@@ -4,20 +4,29 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-import HelpIcon from '@material-ui/icons/Help';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import ThumbDown from '@material-ui/icons/ThumbDown';
-import ThumbUp from '@material-ui/icons/ThumbUp';
 import Typography from '@material-ui/core/Typography';
+
+import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/blue';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+
+import Home from './Home';
+import UserProfile from './UserProfile';
+import TrackStatus from './TrackStatus';
 
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}
     </Typography>
+  );
+}
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
   );
 }
 
@@ -49,23 +58,36 @@ class ScrollableTabsButtonPrevent extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
+          {/* Home Icon */}
           <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="on">
-            <Tab icon={<PhoneIcon />} />
-            <Tab icon={<FavoriteIcon />} />
+            <Tab icon={<HomeIcon
+              className={classes.icon}
+              color="primary"
+              style={{ fontSize: 36 }}
+              component={svgProps => (
+                <svg {...svgProps}>
+                  <defs>
+                    <linearGradient id="gradient1">
+                      <stop offset="30%" stopColor={blue[400]} />
+                      <stop offset="70%" stopColor={red[400]} />
+                    </linearGradient>
+                  </defs>
+                  {React.cloneElement(svgProps.children[0], { fill: 'url(#gradient1)' })}
+                </svg>
+              )}
+            />} />
+
+            {/* Profile */}
             <Tab icon={<PersonPinIcon />} />
-            <Tab icon={<HelpIcon />} />
-            <Tab icon={<ShoppingBasket />} />
-            <Tab icon={<ThumbDown />} />
-            <Tab icon={<ThumbUp />} />
+            <Tab icon={<i className="material-icons">
+                local_shipping
+              </i>} />
+              
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><h1>hi</h1></TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
-        {value === 3 && <TabContainer>Item Four</TabContainer>}
-        {value === 4 && <TabContainer>Item Five</TabContainer>}
-        {value === 5 && <TabContainer>Item Six</TabContainer>}
-        {value === 6 && <TabContainer>Item Seven</TabContainer>}
+        {value === 0 && <TabContainer><Home /></TabContainer>}
+        {value === 1 && <TabContainer><UserProfile /></TabContainer>}
+        {value === 2 && <TabContainer><TrackStatus /></TabContainer>}
       </div>
     );
   }

@@ -20,7 +20,7 @@ Install the dependencies and devDependencies and start the server.
 ```
 ##### open http://localhost:5000 for production environment
 
-# Node moudles
+# Node modules used
 
  - @material-ui/core
  - @material-ui/icons
