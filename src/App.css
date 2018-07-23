@@ -17,3 +17,7 @@
 .App-intro {
   font-size: large;
 }
+
+#email, #password {
+  margin-left: 70px;
+}

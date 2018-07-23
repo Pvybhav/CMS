@@ -4,18 +4,13 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import Input from "@material-ui/core/Input";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const styles = props => ({
     root: {
@@ -91,7 +86,8 @@ class Home extends Component{
         } = this.props;
         let {
             showPassword,
-            password
+            password,
+            email
         } = this.state;
         return(
             <div className={classes.root}>
@@ -109,37 +105,50 @@ class Home extends Component{
                         </AppBar>
                         <Paper className={classes.paper}>
                             <form className={classes.container} noValidate autoComplete="off" >
-                                <TextField
+                                {/* <TextField
                                     label="Email ID"
                                     id="email"
                                     className={classNames(classes.margin, classes.textField)}
                                     onChange = {
                                         this.handleEmailChange
                                     }
-                                />
+                                /> */}
                                 <br />
+                                <FormControl className = {
+                                    classNames(classes.margin, classes.textField
+                                    )} >
+                                    <InputLabel htmlFor="adornment-password">Email ID</InputLabel>
+                                    <Input
+                                        id="email"
+                                        type="email"
+                                        value={email}
+                                        onChange = {
+                                            this.handleEmailChange
+                                        }
+                                    />
+                                </FormControl><br /><br />
                                 <FormControl className = {
                                     classNames(classes.margin, classes.textField
                                     )} >
                                     <InputLabel htmlFor="adornment-password">Password</InputLabel>
                                     <Input
-                                        id="adornment-password"
+                                        id="password"
                                         type={showPassword ? "text" : "password"}
                                         value={password}
                                         onChange = {
                                             this.handlePasswordChange
                                         }
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="Toggle password visibility"
-                                                    onClick={this.handleClickShowPassword}
-                                                    onMouseDown={this.handleMouseDownPassword}
-                                                >
-                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
+                                        // endAdornment={
+                                        //     <InputAdornment position="end">
+                                        //         <IconButton
+                                        //             aria-label="Toggle password visibility"
+                                        //             onClick={this.handleClickShowPassword}
+                                        //             onMouseDown={this.handleMouseDownPassword}
+                                        //         >
+                                        //             {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        //         </IconButton>
+                                        //     </InputAdornment>
+                                        // }
                                     />
                                 </FormControl>
                                 <br /><br />
