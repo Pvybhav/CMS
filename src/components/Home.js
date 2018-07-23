@@ -1,117 +1,169 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import React, { Component } from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Input from "@material-ui/core/Input";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-const tutorialSteps = [
-    {
-        label: 'How to be happy :',
-        imgPath: '../public/images/Foreign-Parcel.jpg',
-    },
-    {
-        label: '1. Work with something that you like, like…',
-        imgPath: '../public/images/Foreign-Parcel.jpg',
-    },
-    {
-        label: '2. Keep your friends close to you and hangout with them',
-        imgPath: '../public/images/Foreign-Parcel.jpg',
-    },
-    {
-        label: '3. Travel everytime that you have a chance',
-        imgPath: '../public/images/Foreign-Parcel.jpg',
-    },
-    {
-        label: '4. And contribute to Material-UI :D',
-        imgPath: '../public/images/Foreign-Parcel.jpg',
-    },
-];
-
-const styles = theme => ({
+const styles = props => ({
     root: {
-        maxWidth: 1400,
-        minHeight: 1000,
         flexGrow: 1,
+        // backgroundColor: "cyan",
+        // overflow: "hidden",
+        // backgroundSize: "cover",
     },
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-        height: 30,
-        paddingLeft: theme.spacing.unit * 4,
-        marginBottom: 20,
-        backgroundColor: theme.palette.background.default,
+    paper: {
+        padding: props.spacing.unit * 2,
+        textAlign: "center",
+        color: props.palette.text.secondary,
+        alignItems: "center",
     },
-    img: {
-        height: 255,
-        maxWidth: 400,
-        overflow: 'hidden',
-        width: '100%',
+    grid: {
+        alignItems: "center",
     },
+    AppBar: {
+        backgroundColor: "cadetblue",
+        color: "yellow",
+    }
 });
-
-class TextMobileStepper extends React.Component {
-    state = {
-        activeStep: 0,
+class Home extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            showPassword: false,
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
+        this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    }
+    handleChange = prop => event => {
+        this.setState({
+            [prop]: event.target.value
+        });
+    };
+    handleMouseDownPassword = event => {
+        event.preventDefault();
     };
 
-    handleNext = () => {
-        this.setState(prevState => ({
-            activeStep: prevState.activeStep + 1,
+    handleClickShowPassword = () => {
+        this.setState(state => ({
+            showPassword: !state.showPassword
         }));
     };
-
-    handleBack = () => {
-        this.setState(prevState => ({
-            activeStep: prevState.activeStep - 1,
-        }));
-    };
-
-    render() {
-        const { classes, theme } = this.props;
-        const { activeStep } = this.state;
-
-        const maxSteps = tutorialSteps.length;
-
-        return (
+    handleEmailChange = (e) => {
+        this.setState({
+            email: e.target.value
+        },
+        console.log(this.state.email)
+        );
+    }
+    handlePasswordChange = (e) => {
+        this.setState({
+            password: e.target.value
+        },
+        console.log(this.state.password)
+        );
+    }
+    handleLogin = (e) =>{
+        console.log(this.state.email, this.state.password);
+        // this.props.history.push("/home");
+    }
+    render(){
+        const {
+            classes
+        } = this.props;
+        let {
+            showPassword,
+            password
+        } = this.state;
+        return(
             <div className={classes.root}>
-                <Paper square elevation={0} className={classes.header}>
-                    <Typography>{tutorialSteps[activeStep].label}</Typography>
-                </Paper>
-                <img
-                    className={classes.img}
-                    src={tutorialSteps[activeStep].imgPath}
-                    alt={tutorialSteps[activeStep].label}
-                />
-                <MobileStepper
-                    steps={maxSteps}
-                    position="static"
-                    activeStep={activeStep}
-                    className={classes.mobileStepper}
-                    nextButton={
-                        <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-                            Next
-              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                        </Button>
-                    }
-                    backButton={
-                        <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
-                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                            Back
-            </Button>
-                    }
-                />
+                <Grid container spacing={24}>
+                    <Grid item xs={3}>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <AppBar position = "static" className = {classes.AppBar}
+                        >
+                            <Toolbar>
+                                <Typography variant="title" color="inherit" className={classes.flex}>
+                                    Login
+                                </Typography>
+                            </Toolbar>
+                        </AppBar>
+                        <Paper className={classes.paper}>
+                            <form className={classes.container} noValidate autoComplete="off" >
+                                <TextField
+                                    label="Email ID"
+                                    id="email"
+                                    className={classNames(classes.margin, classes.textField)}
+                                    onChange = {
+                                        this.handleEmailChange
+                                    }
+                                />
+                                <br />
+                                <FormControl className = {
+                                    classNames(classes.margin, classes.textField
+                                    )} >
+                                    <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                                    <Input
+                                        id="adornment-password"
+                                        type={showPassword ? "text" : "password"}
+                                        value={password}
+                                        onChange = {
+                                            this.handlePasswordChange
+                                        }
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="Toggle password visibility"
+                                                    onClick={this.handleClickShowPassword}
+                                                    onMouseDown={this.handleMouseDownPassword}
+                                                >
+                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
+                                <br /><br />
+                                < Button variant = "contained"
+                                    color = "primary"
+                                    className = {
+                                        classes.button
+                                    } 
+                                    onClick={this.handleLogin}
+                                >
+                                    Login 
+                                </Button>
+                            </form>
+                        </Paper>
+                    </Grid>
+                </Grid>
             </div>
         );
     }
-}
-
-TextMobileStepper.propTypes = {
-    classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(TextMobileStepper);
+Home.propTypes = {
+    classes: PropTypes.object.isRequired,
+    history: PropTypes.string
+};
+
+export default withStyles(styles)(Home);
