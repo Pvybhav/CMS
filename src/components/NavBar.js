@@ -11,7 +11,8 @@ import blue from "@material-ui/core/colors/blue";
 import SvgIcon from "@material-ui/core/SvgIcon";
 
 import Home from "./Home";
-
+import SignUp from "./SignUp";
+import TrackCourierStatus from "./TrackCourierStatus";
 function TabContainer(props) {
     return (
         <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -58,7 +59,7 @@ class ScrollableTabsButtonPrevent extends React.Component {
                   
                   <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="on">
                       {/* Profile */}
-                      {/* <Tab icon={<PersonPinIcon />} /> */}
+                      <Tab icon={<HomeIcon />} />
                       
                       {/* Home Icon */}
                       <Tab icon={<HomeIcon
@@ -79,17 +80,17 @@ class ScrollableTabsButtonPrevent extends React.Component {
                       />} />
 
                      
-                      {/* <Tab icon={
+                      <Tab icon={
                           <i className="material-icons">
                             local_shipping
                           </i>
-                      } /> */}
-              
+                      } />
                   </Tabs>
               </AppBar>
-              {value === 0 && <TabContainer><Home /></TabContainer>}
+              {value === 0 && <TabContainer><SignUp /></TabContainer>}
+              {value === 1 && <TabContainer><Home /></TabContainer>}
+              {value === 2 && <TabContainer><TrackCourierStatus /></TabContainer>}
               {/* {value === 0 && <TabContainer><UserProfile /></TabContainer>} */}
-              {/* {value === 2 && <TabContainer><TrackStatus /></TabContainer>} */}
           </div>
       );
   }
