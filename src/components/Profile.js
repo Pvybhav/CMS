@@ -13,13 +13,12 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 let id = 0;
-function createData(dateAndTime, location, estimationTime) {
+function createData(dateAndTime, location) {
     id += 1;
     return {
         id,
         dateAndTime,
         location,
-        estimationTime,
     };
 }
 
@@ -58,9 +57,9 @@ class Profile extends Component{
         this.state = {
             orderNumber: "",
             orderDetails: [
-                createData("DD/MM/YYYY HH:MM", "Location", "Estimation time"),
-                createData("DD/MM/YYYY HH:MM", "Location", "Estimation time"),
-                createData("DD/MM/YYYY HH:MM", "Location", "Estimation time"),
+                createData("Name", "Vybhav"),
+                createData("Date Of Birth", "20/05/1995"),
+                createData("Location", "YVPL"),
             ],
         };
     }
@@ -88,13 +87,13 @@ class Profile extends Component{
                         </AppBar>
                         <Paper className={classes.paper}>
                             <Table className={classes.table}>
-                                <TableHead>
+                                {/* <TableHead>
                                     <TableRow>
                                         <CustomTableCell>Date and Time</CustomTableCell>
                                         <CustomTableCell numeric>Location Of the Courier</CustomTableCell>
                                         <CustomTableCell numeric>Estimation Time</CustomTableCell>
                                     </TableRow>
-                                </TableHead>
+                                </TableHead> */}
                                 <TableBody>
                                     {orderDetails.map(details => {
                                         return (

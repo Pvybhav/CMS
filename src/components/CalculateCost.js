@@ -140,7 +140,7 @@ class CalculateCost extends Component {
                         >
                             <Toolbar>
                                 <Typography variant="title" color="inherit" className={classes.flex}>
-                                    Calculate Cost
+                                    Check The Shipping Cost
                                 </Typography>
                             </Toolbar>
                         </AppBar>

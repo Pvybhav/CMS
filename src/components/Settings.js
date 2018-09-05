@@ -7,12 +7,14 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 
 import Profile from "./Profile";
+import AboutUs from "./AboutUs";
+import ContactUs from "./ContactUs";
 
 // import classNames from "classnames";
 // import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 // import AppBar from "@material-ui/core/AppBar";
 // import Toolbar from "@material-ui/core/Toolbar";
 // import Typography from "@material-ui/core/Typography";
@@ -43,25 +45,25 @@ function Settings(props) {
         <Router>
             <div className={classes.root}>
                 <Grid container spacing={24}>
-                    <Grid item xs={3}>
+                    <Grid item xs={5}>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={1.5}>
                         <div>
                             <List component="nav">
                                 <ListItem button>
-                                    <Link to="/Profile"><ListItemText primary="Profile" /></Link>
+                                    <Link to="/Profile"><ListItemText primary="View Profile" /></Link>
                                 </ListItem>
                                 <Divider />
                                 <ListItem button divider>
-                                    <Link to="/ChangeSettings"><ListItemText primary="Settings" /></Link>
+                                    <Link to="/ChangeSettings"><ListItemText primary="Change Settings" /></Link>
                                 </ListItem>
                                 <ListItem button>
-                                    <Link to="/ContactUS"><ListItemText primary="Contact" /></Link>
+                                    <Link to="/AboutUs"><ListItemText primary="About Us" /></Link>
+                                </ListItem>
+                                <ListItem button>
+                                    <Link to="/ContactUs"><ListItemText primary="Contact Us" /></Link>
                                 </ListItem>
                                 <Divider light />
-                                <ListItem button>
-                                    <Link to="/AboutUS"><ListItemText primary="AboutUS" /></Link>
-                                </ListItem>
                             </List>
                         </div>
                     </Grid>
@@ -69,8 +71,8 @@ function Settings(props) {
                 <Grid container spacing={24}>
                     <Route path="/Profile" component={Profile} />
                     <Route path="/ChangeSettings" component={ChangeSettings} />
-                    <Route path="/ContactUS" component={ContactUS} />
-                    <Route path="/AboutUS" component={AboutUS} />
+                    <Route path="/ContactUs" component={ContactUs} />
+                    <Route path="/AboutUs" component={AboutUs} />
                 </Grid>
             </div>
         </Router>
@@ -88,16 +90,8 @@ const ChangeSettings = () => (
         <h2>Settings</h2>
     </div>
 );
-const ContactUS = () => (
-    <div>
-        <h2>ContactUSjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</h2>
-    </div>
-);
-const AboutUS = () => (
-    <div>
-        <h2>AboutUS</h2>
-    </div>
-);
+
+
 
 // const Topics = ({ match }) => (
 //     <div>
@@ -133,3 +127,5 @@ Settings.propTypes = {
 };
 
 export default withStyles(styles)(Settings);
+
+// http://preview.codecanyon.net/item/courier-management-system/full_screen_preview/17459005?_ga=2.129667343.2097255233.1536161261-1663976971.1524400160&_gac=1.82510564.1536161261.CjwKCAjw_b3cBRByEiwAdG8WqlqZjSotr4t7JvJSvnPsc4xQSAO3bkU_bH1LAkJfDvwdKA2KxhDkDBoCI6sQAvD_BwE
