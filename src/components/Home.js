@@ -15,6 +15,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import IconButton from "@material-ui/core/IconButton";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const styles = props => ({
     root: {
@@ -156,6 +157,8 @@ class Home extends Component{
                                     />
                                 </FormControl>
                                 <br /><br /><br />
+                                Login as Admin?
+                                <Checkbox color="primary" onClick={console.log("hi")}/>
                                 < Button variant = "contained"
                                     color = "primary"
                                     className = {

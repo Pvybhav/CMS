@@ -63,9 +63,9 @@ class TrackOrderStatus extends Component{
             orderNumber: "",
             showTrackOrderStatus: false,
             orderDetails: [
-                createData("DD/MM/YYYY HH:MM", "Current Location", "Estimation time"),
-                createData("DD/MM/YYYY HH:MM", "Current Location", "Estimation time"),
-                createData("DD/MM/YYYY HH:MM", "Current Location", "Estimation time"),
+                createData("DD/MM/YYYY HH:MM", "Location", "Estimation time"),
+                createData("DD/MM/YYYY HH:MM", "Location", "Estimation time"),
+                createData("DD/MM/YYYY HH:MM", "Location", "Estimation time"),
             ],
         };
         this.handleChange = this.handleChange.bind(this);

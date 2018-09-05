@@ -13,6 +13,9 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import Home from "./Home";
 import SignUp from "./SignUp";
 import TrackCourierStatus from "./TrackCourierStatus";
+import UserProfile from "./UserProfile";
+import Settings from "./Settings";
+
 function TabContainer(props) {
     return (
         <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -60,7 +63,7 @@ class ScrollableTabsButtonPrevent extends React.Component {
                   <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="on">
                       {/* Profile */}
                       <Tab icon={<HomeIcon />} />
-                      
+                      {/* <Tab label="Facebook" component={Settings} to="/settings" /> */}
                       {/* Home Icon */}
                       <Tab icon={<HomeIcon
                           className={classes.icon}
@@ -85,12 +88,20 @@ class ScrollableTabsButtonPrevent extends React.Component {
                             local_shipping
                           </i>
                       } />
+
+                      <Tab icon={
+                          <i className="material-icons">
+                              settings
+                              {/* account_circle */}
+                          </i>
+                      } />
+                      
                   </Tabs>
               </AppBar>
               {value === 0 && <TabContainer><SignUp /></TabContainer>}
               {value === 1 && <TabContainer><Home /></TabContainer>}
               {value === 2 && <TabContainer><TrackCourierStatus /></TabContainer>}
-              {/* {value === 0 && <TabContainer><UserProfile /></TabContainer>} */}
+              {value === 3 && <TabContainer><Settings /></TabContainer>}
           </div>
       );
   }
